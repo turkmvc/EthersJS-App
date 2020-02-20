@@ -7,6 +7,7 @@ when you have already cloned this project you have to do this before.
 ```
 npm install
 ```
+then deploy your contract and edit app.js toyour own Provider, PrivateKey , Contract Address and Contract ABI
 Dependencies are
 - Ethers [Docs](https://docs.ethers.io/ethers.js/html/index.html)
 - Truffle [Docs](https://www.trufflesuite.com/docs/truffle/overview)
