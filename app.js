@@ -12,7 +12,7 @@ const contractABI = contractJSON.abi
 let contract = new ethers.Contract(contractAddress, contractABI, provider);
 // console.log(contract);
 
-// init contract with sign wallt
+// init contract with sign wallet
 let contractWithSigner = contract.connect(wallet);
 
 // Calling a Non-Constant Method (contract with sign wallt variable)
