@@ -16,27 +16,32 @@ let contract = new ethers.Contract(contractAddress, contractABI, provider);
 let contractWithSigner = contract.connect(wallet);
 
 // Calling a Non-Constant Method (contract with sign wallt variable)
-addReceipt = () =>{
-    contractWithSigner.add(["a124", "A021684"],[["a123", "Espresso", 4500, 1, false, 0 ],["a123", "IPhoneXI", 4500000, 1, true, 365 ]]).then(result => {console.log(result)}).catch(err =>{console.log(err);});
+addReceipt = (recId, items) =>{
+    contractWithSigner.add(recId, items).then(result => {console.log(result)}).catch(err =>{console.log(err);});
+    // contractWithSigner.add(["a123", "A021684"], [["a123", "Espresso", 4500, 1, false, 0 ],["a123", "IPhoneXI", 4500000, 1, true, 365 ]]).then(result => {console.log(result)}).catch(err =>{console.log(err);});
 }
+let rec = ["a129", "A021684"]
+let items = [["a129", "Espresso", 4500, 1, false, 0 ],["a129", "IPhoneXI", 4500000, 1, true, 365 ]]
+// addReceipt(rec, items)
 // addReceipt()
 
 // Calling a read-only Constant Method (Use contract variable)
 getReciptInfomation =(receiptId)=>{
     contract.getAllItemFromReceipt(receiptId).then(result =>{console.log(result)}).catch(err =>{console.log(err)})
 }
-// getReciptInfomation("a124")
+getReciptInfomation("a129")
 
 getItem =(receiptId, itemNumber)=>{
     contract.getItem(receiptId, itemNumber).then(result =>{console.log(result)}).catch(err =>{console.log(err)})
 }
-// getItem("a124", 0)
+// getItem("a129", 0)
 
 getItem= async()=>{
     try{
-        let item =  await contract.getItem("a124", 0)
+        let item =  await contract.getItem("a129", 0)
         let item0 = {recId: item[0], productName:item[1],  price:parseInt(item[2]),amount:parseInt(item[3]), warranty:item[4], warrantyTime:parseInt(item[5])}
-        console.log(item0);
+        // console.log(item0);
+        // console.log(item);
     }catch(err){
         console.log(err.data.name);
     }
